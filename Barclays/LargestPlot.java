@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class LargestPlot {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter No of houses in a city: ");
-
+        System.out.println("Enter No of houses in a city");
         int size = sc.nextInt();
         int[][] houses = new int[size + 1][2];
         houses[0][0] = size;
@@ -52,6 +51,6 @@ public class LargestPlot {
             a = b;
             b = q;
         }
-        System.out.println(a + " " + b);
+        System.out.println("House numbers between which large plot is available to build a house : " + a + " " + b);
     }
 }

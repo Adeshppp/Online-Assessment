@@ -8,14 +8,14 @@ public class SJF {
         int a = sc.nextInt();
         int[] at = new int[a];
 
-        System.out.print("Enter the arriving time of processes: ");
+        System.out.print("Enter the request time of processes: ");
         for (int i = 0; i < a; i++) {
             at[i] = sc.nextInt();
         }
 
         int[] bt = new int[a];
 
-        System.out.print("Enter the arriving time of processes: ");
+        System.out.print("Enter the duration of each process: ");
         for (int i = 0; i < a; i++) {
             bt[i] = sc.nextInt();
         }

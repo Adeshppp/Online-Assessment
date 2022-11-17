@@ -1,3 +1,7 @@
+// problem:
+// given a head of linkedlist, we have to delete the node which contains even number in it.
+
+
 import java.util.Scanner;
 
 public class DeleteEven {

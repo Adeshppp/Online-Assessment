@@ -63,10 +63,7 @@ public class CalculateStatistics {
         //printing results
         String[] result = new String[members.length];
         int i = 0;
-        for (String key : notify.keySet()) {
-            String str = key + "=" + notify.get(key);
-            result[i++] = str;
-        }
+        for (String key : notify.keySet()) result[i++] = key + "=" + notify.get(key);
         Arrays.sort(result);
         for (i = 0; i < result.length; i++) System.out.print(result[i] + " ");
         System.out.println();

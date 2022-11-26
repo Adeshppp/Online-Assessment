@@ -33,15 +33,14 @@ public class CalculateStatistics {
             if (ids.length == 0 || (ids.length == 1 && ids[0].equals(""))) continue;
             set.clear();
             if (strings[0].equals("MESSAGE")) {
-                for (int j = 0; j < ids.length; j++) {
-                    if (ids[j].equals("ALL")) {
+                for (String id : ids) {
+                    if (id.equals("ALL")) {
                         for (String each : members) notify.put(each, notify.getOrDefault(each, 0) + 1);
                         break;
-                    } else if (ids[j].equals("HERE")) for (String each : members) {
+                    } else if (id.equals("HERE")) for (String each : members) {
                         if (active.get(each) <= Integer.parseInt(strings[1])) set.add(each);
                     }
-                    else set.add(ids[j]);
-
+                    else set.add(id);
                 }
                 for (String temp : set) notify.put(temp, notify.get(temp) + 1);
             } else if (strings[0].equals("OFFLINE")) {
@@ -54,7 +53,6 @@ public class CalculateStatistics {
                         if (active.get(each) <= Integer.parseInt(strings[1])) set.add(id);
                     }
                     else set.add(id);
-
                 }
                 for (String temp : set) {
                     active.put(temp, active.get(temp) + 60 + Integer.parseInt(strings[1]));
@@ -73,6 +71,4 @@ public class CalculateStatistics {
         for (i = 0; i < result.length; i++) System.out.print(result[i] + " ");
         System.out.println();
     }
-
-
 }

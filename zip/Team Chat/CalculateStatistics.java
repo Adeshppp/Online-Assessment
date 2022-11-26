@@ -27,43 +27,37 @@ public class CalculateStatistics {
         for (String each : members) active.put(each, 0);
         for (String each : members) notify.put(each, 0);
 
-        for (int i = 0; i < arr.length; i++) {
+        for (String[] strings : arr) {
             String[] ids = null;
-            ids = arr[i][2].split(" ");
+            ids = strings[2].split(" ");
             if (ids.length == 0 || (ids.length == 1 && ids[0].equals(""))) continue;
             set.clear();
-            if (arr[i][0].equals("MESSAGE")) {
+            if (strings[0].equals("MESSAGE")) {
                 for (int j = 0; j < ids.length; j++) {
                     if (ids[j].equals("ALL")) {
                         for (String each : members) notify.put(each, notify.getOrDefault(each, 0) + 1);
                         break;
                     } else if (ids[j].equals("HERE")) for (String each : members) {
-                        if (active.get(each) <= Integer.parseInt(arr[i][1])) set.add(each);
+                        if (active.get(each) <= Integer.parseInt(strings[1])) set.add(each);
                     }
                     else set.add(ids[j]);
 
                 }
-                Iterator<String> mit = set.iterator();
-                while (mit.hasNext()) {
-                    String temp = mit.next();
-                    notify.put(temp, notify.get(temp) + 1);
-                }
-            } else if (arr[i][0].equals("OFFLINE")) {
-                for (int j = 0; j < ids.length; j++) {
-                    if (ids[j].equals("ALL")) {
+                for (String temp : set) notify.put(temp, notify.get(temp) + 1);
+            } else if (strings[0].equals("OFFLINE")) {
+                for (String id : ids) {
+                    if (id.equals("ALL")) {
                         for (String each : members)
-                            active.put(each, active.get(each) + 60 + Integer.parseInt(arr[i][1]));
+                            active.put(each, active.get(each) + 60 + Integer.parseInt(strings[1]));
                         break;
-                    } else if (ids[j].equals("HERE")) for (String each : members) {
-                        if (active.get(each) <= Integer.parseInt(arr[i][1])) set.add(ids[j]);
+                    } else if (id.equals("HERE")) for (String each : members) {
+                        if (active.get(each) <= Integer.parseInt(strings[1])) set.add(id);
                     }
-                    else set.add(ids[j]);
+                    else set.add(id);
 
                 }
-                Iterator<String> it = set.iterator();
-                while (it.hasNext()) {
-                    String temp = it.next();
-                    active.put(temp, active.get(temp) + 60 + Integer.parseInt(arr[i][1]));
+                for (String temp : set) {
+                    active.put(temp, active.get(temp) + 60 + Integer.parseInt(strings[1]));
                 }
             }
         }

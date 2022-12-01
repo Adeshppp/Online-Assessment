@@ -5,12 +5,11 @@ public class CyclicArray {
 //        int[] arr = new int[]{3, 2, 1, 5, 4};
 //        int[] arr = new int[]{1, 4, 2, 3};
 //        int[] arr = new int[]{98};
-        int[] arr = new int[]{2, 1, 0, -1, 5, 4, 3};
-        System.out.println(Solution(arr));
+        int[] arr = new int[]{2, 4};
+        Solution(arr);
     }
 
-    public static int Solution(int[] arr) {
-        int result = 0;
+    public static void Solution(int[] arr) {
         int flag = 0;
         if (arr.length < 1) {
             System.out.println("-1");
@@ -29,20 +28,19 @@ public class CyclicArray {
                 }
             }
             for (int i = 0; i < arr.length; i++) {
-                int z = arr.length - 1 - i;
+                int z = i;
                 int[] temp = new int[arr.length];
                 for (int j = 0; j < arr.length; j++) {
                     temp[j] = arr[z++];
                     if (z == arr.length) z = 0;
                 }
                 if (Arrays.equals(temp, sorted)) {
-                    result = i + 1;
+                    System.out.println(i);
                     flag = 1;
                     break;
                 }
             }
-            if (flag == 0) result = -1;
+            if (flag == 0) System.out.println("-1");
         }
-        return result;
     }
 }
